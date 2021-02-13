@@ -14,7 +14,6 @@ namespace Lab1ICTP
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
-            Console.WriteLine();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
