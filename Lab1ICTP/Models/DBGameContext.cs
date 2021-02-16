@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Lab1ICTP
 {
-    public partial class DBLibraryContext : DbContext
+    public partial class DBGameContext : DbContext
     {
-        public DBLibraryContext()
+        public DBGameContext()
         {
         }
 
-        public DBLibraryContext(DbContextOptions<DBLibraryContext> options)
+        public DBGameContext(DbContextOptions<DBGameContext> options)
             : base(options)
         {
         }
@@ -32,7 +32,7 @@ namespace Lab1ICTP
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server= DESKTOP-4Q4VO5S; Database= DBLibrary; Trusted_Connection= true;");
+                optionsBuilder.UseSqlServer("Server= DESKTOP-4Q4VO5S; Database= DBGame; Trusted_Connection= true;");
             }
         }
 
