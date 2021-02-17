@@ -9,6 +9,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Lab1ICTP.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace Lab1ICTP
 {
     public class Startup
@@ -23,6 +26,8 @@ namespace Lab1ICTP
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            string connection = Configuration.GetConnectionString("DefaultConnection");
+            services.AddDbContext<DBGameContext>(options => options.UseSqlServer(connection));
             services.AddControllersWithViews();
         }
 
@@ -50,7 +55,7 @@ namespace Lab1ICTP
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Cities}/{action=Index}/{id?}");
             });
         }
     }
