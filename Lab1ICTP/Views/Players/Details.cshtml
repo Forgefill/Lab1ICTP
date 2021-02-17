@@ -1,4 +1,4 @@
-﻿@model Lab1ICTP.Stadium
+﻿@model Lab1ICTP.Player
 
 @{
     ViewData["Title"] = "Details";
@@ -7,24 +7,24 @@
 <h1>Деталі</h1>
 
 <div>
-    <h4>Стадіон</h4>
+    <h4>Гравець</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.FirstName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.FirstName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.SurName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City.Name)
+            @Html.DisplayFor(model => model.SurName)
         </dd>
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.StadiumId">Редагувати</a> |
+    <a asp-action="Edit" asp-route-id="@Model.PlayerId">Редагувати</a> |
     <a asp-action="Index">Повернутися до списку</a>
 </div>

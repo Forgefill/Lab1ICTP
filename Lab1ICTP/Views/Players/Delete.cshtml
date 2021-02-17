@@ -1,4 +1,4 @@
-﻿@model Lab1ICTP.Stadium
+﻿@model Lab1ICTP.Player
 
 @{
     ViewData["Title"] = "Delete";
@@ -6,27 +6,26 @@
 
 <h1>Видалення</h1>
 
-<h3>Ви дійсно хочете видалити обраний стадіон?</h3>
+<h3>Ви дійсно хочете видалити обраного гравця?</h3>
 <div>
-    <h4>Stadium</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.FirstName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.FirstName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.SurName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City.Name)
-        </dd class>
+            @Html.DisplayFor(model => model.SurName)
+        </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="StadiumId" />
+        <input type="hidden" asp-for="PlayerId" />
         <input type="submit" value="Видалити" class="btn btn-danger" /> |
         <a asp-action="Index">Повернутися до списку</a>
     </form>

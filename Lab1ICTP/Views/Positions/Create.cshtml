@@ -1,12 +1,12 @@
-﻿@model Lab1ICTP.Stadium
+﻿@model Lab1ICTP.Position
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Додавання стадіону до міста @ViewBag.Name</h1>
+<h1>Додавання</h1>
 
-<h4>Стадіон</h4>
+<h4>Позиція</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,11 +17,6 @@
                 <input asp-for="Name" class="form-control" />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="CityId" class="control-label"></label>
-                <select asp-for="CityId" class ="form-control" asp-items="@ViewBag.CityId"></select>
-            </div>
-            <input type ="hidden" value="@ViewBag.CityId" name="CityId"/>
             <div class="form-group">
                 <input type="submit" value="Створити" class="btn btn-primary" />
             </div>

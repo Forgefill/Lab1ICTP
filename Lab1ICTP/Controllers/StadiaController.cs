@@ -80,6 +80,7 @@ namespace Lab1ICTP.Controllers
         // GET: Stadia/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+
             if (id == null)
             {
                 return NotFound();
