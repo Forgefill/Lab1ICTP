@@ -1,0 +1,54 @@
+﻿@model Lab1ICTP.Game
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Деталі</h1>
+
+<div>
+    <h4>Матч</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StartTime)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StartTime)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Referee)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Referee.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stadium)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stadium.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Team)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Team.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamId2Navigation)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TeamId2Navigation.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Tournament)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Tournament.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.GameId">Редагувати</a> |
+    <a asp-action="Index">Повернутися до списку</a>
+</div>

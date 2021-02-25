@@ -55,7 +55,7 @@ namespace Lab1ICTP
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Cities}/{action=Index}/{id?}");
+                    pattern: "{controller=Games}/{action=Index}/{id?}");
             });
         }
     }

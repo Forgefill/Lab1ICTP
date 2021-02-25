@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Lab1ICTP.Referee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Судді</h1>
+
+<p>
+    <a asp-action="Create">Додати суддю</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.RefereeId">Редагувати</a> |
+                <a asp-action="Details" asp-route-id="@item.RefereeId">Деталі</a> |
+                <a asp-action="Delete" asp-route-id="@item.RefereeId">Видалити</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
