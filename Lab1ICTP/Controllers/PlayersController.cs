@@ -39,7 +39,8 @@ namespace Lab1ICTP.Controllers
                 return NotFound();
             }
 
-            return View(player);
+            //return View(player);
+            return RedirectToAction("Index", "Careers", new { id = player.PlayerId, name = player.FullName });
         }
 
         // GET: Players/Create

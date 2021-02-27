@@ -19,10 +19,14 @@ namespace Lab1ICTP.Controllers
         }
 
         // GET: Careers
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id, string name)
         {
-            var dBGameContext = _context.Careers.Include(c => c.Player).Include(c => c.Position).Include(c => c.Team);
-            return View(await dBGameContext.ToListAsync());
+            if (id == null) return RedirectToAction("Index", "Players");
+            ViewBag.PlayerId = id;
+            ViewBag.PlayerName = name;
+            var CareersByPlayer = _context.Careers.Where(c => c.PlayerId == id).Include(b => b.Player).Include(a => a.Position).Include(c => c.Team);
+            //var dBGameContext = _context.Careers.Include(c => c.Player).Include(c => c.Position).Include(c => c.Team);
+            return View(await CareersByPlayer.ToListAsync());
         }
 
         // GET: Careers/Details/5
@@ -47,9 +51,11 @@ namespace Lab1ICTP.Controllers
         }
 
         // GET: Careers/Create
-        public IActionResult Create()
+        public IActionResult Create(int playerId)
         {
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName");
+            ViewBag.PlayerId = playerId;
+            ViewBag.PlayerName = _context.Players.Where(c => c.PlayerId == playerId).FirstOrDefault().FullName;
+            //ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName");
             ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name");
             ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name");
             return View();
@@ -60,18 +66,21 @@ namespace Lab1ICTP.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CareerId,TeamId,PlayerId,StartDate,EndDate,PositionId")] Career career)
+        public async Task<IActionResult> Create(int playerId,[Bind("CareerId,TeamId,PlayerId,StartDate,EndDate,PositionId")] Career career)
         {
+            career.PlayerId = playerId;
             if (ModelState.IsValid)
             {
                 _context.Add(career);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Careers", new { id = playerId, name = _context.Players.Where(c => c.PlayerId == playerId).FirstOrDefault().FullName });
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName", career.PlayerId);
-            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
-            ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
-            return View(career);
+            //ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName", career.PlayerId);
+            //ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
+            //ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
+            //return View(career);
+            return RedirectToAction("Index", "Careers", new { id = playerId, name = _context.Players.Where(a => a.PlayerId == playerId).FirstOrDefault().FullName });
         }
 
         // GET: Careers/Edit/5
