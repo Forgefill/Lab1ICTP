@@ -30,8 +30,10 @@ namespace Lab1ICTP.Controllers
         }
 
         // GET: Careers/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int playerId)
         {
+            ViewBag.PlayerId = playerId;
+            ViewBag.PlayerName = _context.Players.Where(c => c.PlayerId == playerId).FirstOrDefault().FullName;
             if (id == null)
             {
                 return NotFound();
@@ -84,8 +86,10 @@ namespace Lab1ICTP.Controllers
         }
 
         // GET: Careers/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int playerId)
         {
+            ViewBag.PlayerId = playerId;
+            ViewBag.PlayerName = _context.Players.Where(c => c.PlayerId == playerId).FirstOrDefault().FullName;
             if (id == null)
             {
                 return NotFound();
@@ -96,7 +100,7 @@ namespace Lab1ICTP.Controllers
             {
                 return NotFound();
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName", career.PlayerId);
+            //ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName", career.PlayerId);
             ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
             ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
             return View(career);
@@ -107,8 +111,9 @@ namespace Lab1ICTP.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CareerId,TeamId,PlayerId,StartDate,EndDate,PositionId")] Career career)
+        public async Task<IActionResult> Edit(int id, int playerId, [Bind("CareerId,TeamId,PlayerId,StartDate,EndDate,PositionId")] Career career)
         {
+            career.PlayerId = playerId;
             if (id != career.CareerId)
             {
                 return NotFound();
@@ -132,17 +137,19 @@ namespace Lab1ICTP.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Careers", new { id = playerId, name = _context.Players.Where(c => c.PlayerId == playerId).FirstOrDefault().FullName });
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullsName", career.PlayerId);
-            ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
-            ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
-            return View(career);
+            //ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullsName", career.PlayerId);
+            //ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
+            //ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
+            return RedirectToAction("Index", "Careers", new { id = playerId, name = _context.Players.Where(c => c.PlayerId == playerId).FirstOrDefault().FullName });
         }
 
         // GET: Careers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int playerId)
         {
+            ViewBag.PlayerId = playerId;
+            ViewBag.PlayerName = _context.Players.Where(c => c.PlayerId == playerId).FirstOrDefault().FullName;
             if (id == null)
             {
                 return NotFound();
@@ -164,12 +171,12 @@ namespace Lab1ICTP.Controllers
         // POST: Careers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int playerId)
         {
             var career = await _context.Careers.FindAsync(id);
             _context.Careers.Remove(career);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Careers", new { id = playerId, name = _context.Players.Where(a => a.PlayerId == playerId).FirstOrDefault().FullName });
         }
 
         private bool CareerExists(int id)

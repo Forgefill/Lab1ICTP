@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Team.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.CareerId">Редагувати</a>|
-                <a asp-action="Details" asp-route-id="@item.CareerId">Деталі</a> |
-                <a asp-action="Delete" asp-route-id="@item.CareerId">Видалити</a>
+                @Html.ActionLink("Редагувати", "Edit", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId }) |
+                @Html.ActionLink("Деталі", "Details", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId }) |
+                @Html.ActionLink("Видалити", "Delete", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId })
             </td>
         </tr>
 }

@@ -50,6 +50,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.TournamentId">Редагувати</a> |
+                @Html.ActionLink("Матчі турніру", "GamesByTournament", "Games", new { tournamentId = item.TournamentId, name = item.Name }) |
                 <a asp-action="Details" asp-route-id="@item.TournamentId">Деталі</a> |
                 <a asp-action="Delete" asp-route-id="@item.TournamentId">Видалити</a>
             </td>

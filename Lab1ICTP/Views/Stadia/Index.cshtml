@@ -33,6 +33,7 @@
             <td>
                 <a asp-action="Edit" asp-route-id="@item.StadiumId">Редагувати</a> |
                 <a asp-action="Details" asp-route-id="@item.StadiumId">Деталі</a> |
+                @Html.ActionLink("Матчі на стадіоні", "GamesByStadium", "Games", new { stadiumId = item.StadiumId, name = item.Name }) |
                 <a asp-action="Delete" asp-route-id="@item.StadiumId">Видалити</a>
             </td>
         </tr>

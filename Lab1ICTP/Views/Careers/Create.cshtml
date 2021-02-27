@@ -41,7 +41,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Повернутися до списку</a>
+    @Html.ActionLink("Повернутися до списку", "Index", "Careers", new { id = ViewBag.PlayerId, name = ViewBag.PlayerName })
 </div>
 
 @section Scripts {

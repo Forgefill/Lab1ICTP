@@ -179,5 +179,34 @@ namespace Lab1ICTP.Controllers
         {
             return _context.Games.Any(e => e.GameId == id);
         }
+
+        public async Task<IActionResult> GamesByReferee(int refereeId, string name)
+        {
+            ViewBag.refereeId = refereeId;
+            ViewBag.refereeName = name;
+            var GamesByReferee = _context.Games.Where(c=>c.Referee.RefereeId == refereeId).Include(g => g.Stadium).Include(g => g.Team).Include(g => g.TeamId2Navigation).Include(g => g.Tournament);
+            return View(await GamesByReferee.ToListAsync());
+        }
+        public async Task<IActionResult> GamesByTeam(int teamId, string name)
+        {
+            ViewBag.teamId = teamId;
+            ViewBag.teamName = name;
+            var GamesByTeam = _context.Games.Where(c => c.TeamId == teamId || c.TeamId2 == teamId).Include(g =>g.Referee).Include(g => g.Stadium).Include(g => g.Team).Include(g => g.TeamId2Navigation).Include(g => g.Tournament);
+            return View(await GamesByTeam.ToListAsync());
+        }
+        public async Task<IActionResult> GamesByStadium(int stadiumId, string name)
+        {
+            ViewBag.stadiumId = stadiumId;
+            ViewBag.stadiumName = name;
+            var GamesByTeam = _context.Games.Where(c => c.StadiumId == stadiumId).Include(g => g.Referee).Include(g => g.Stadium).Include(g => g.Team).Include(g => g.TeamId2Navigation).Include(g => g.Tournament);
+            return View(await GamesByTeam.ToListAsync());
+        }
+        public async Task<IActionResult> GamesByTournament(int tournamentId, string name)
+        {
+            ViewBag.tournamentId = tournamentId;
+            ViewBag.tournamentName = name;
+            var GamesByTeam = _context.Games.Where(c => c.TournamentId == tournamentId).Include(g => g.Referee).Include(g => g.Stadium).Include(g => g.Team).Include(g => g.TeamId2Navigation).Include(g => g.Tournament);
+            return View(await GamesByTeam.ToListAsync());
+        }
     }
 }

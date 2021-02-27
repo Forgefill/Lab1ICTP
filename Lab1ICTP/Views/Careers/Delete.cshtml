@@ -44,7 +44,8 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="CareerId" />
-        <input type="submit" value="Видалити" class="btn btn-danger" /> |
-        <a asp-action="Index">Повернутися до списку</a>
+        <input type="hidden" value="@ViewBag.PlayerId" name="PlayerId">
+        <input type="submit" value="Видалити" class="btn btn-danger" />|
+        @Html.ActionLink("Повернутися до списку", "Index", "Careers", new { id = ViewBag.PlayerId, name = ViewBag.PlayerName })
     </form>
 </div>

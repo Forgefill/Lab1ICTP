@@ -43,6 +43,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.CareerId">Редагувати</a> |
-    <a asp-action="Index">Повернутися до списку</a>
+    @Html.ActionLink("Редагувати", "Edit", new { id = @Model.CareerId, PlayerId = @ViewBag.PlayerId }) |
+    @Html.ActionLink("Повернутися до списку", "Index", "Careers", new { id = ViewBag.PlayerId, name = ViewBag.PlayerName })
 </div>

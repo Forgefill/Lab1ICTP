@@ -32,6 +32,7 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.RefereeId">Редагувати</a> |
+                @Html.ActionLink("Матчі Судді","GamesByReferee","Games", new { refereeId = item.RefereeId, name = item.FullName }) |
                 <a asp-action="Details" asp-route-id="@item.RefereeId">Деталі</a> |
                 <a asp-action="Delete" asp-route-id="@item.RefereeId">Видалити</a>
             </td>
