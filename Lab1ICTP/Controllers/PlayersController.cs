@@ -53,7 +53,7 @@ namespace Lab1ICTP.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("PlayerId,FirstName,SurName")] Player player)
+        public async Task<IActionResult> Create([Bind("PlayerId,FullName")] Player player)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace Lab1ICTP.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("PlayerId,FirstName,SurName")] Player player)
+        public async Task<IActionResult> Edit(int id, [Bind("PlayerId,FullName")] Player player)
         {
             if (id != player.PlayerId)
             {

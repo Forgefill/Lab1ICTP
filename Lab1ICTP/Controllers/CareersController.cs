@@ -49,7 +49,7 @@ namespace Lab1ICTP.Controllers
         // GET: Careers/Create
         public IActionResult Create()
         {
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FirstName");
+            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName");
             ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name");
             ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name");
             return View();
@@ -68,7 +68,7 @@ namespace Lab1ICTP.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FirstName", career.PlayerId);
+            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName", career.PlayerId);
             ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
             ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
             return View(career);
@@ -87,7 +87,7 @@ namespace Lab1ICTP.Controllers
             {
                 return NotFound();
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FirstName", career.PlayerId);
+            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullName", career.PlayerId);
             ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
             ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
             return View(career);
@@ -125,7 +125,7 @@ namespace Lab1ICTP.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FirstName", career.PlayerId);
+            ViewData["PlayerId"] = new SelectList(_context.Players, "PlayerId", "FullsName", career.PlayerId);
             ViewData["PositionId"] = new SelectList(_context.Positions, "PositionId", "Name", career.PositionId);
             ViewData["TeamId"] = new SelectList(_context.Teams, "TeamId", "Name", career.TeamId);
             return View(career);

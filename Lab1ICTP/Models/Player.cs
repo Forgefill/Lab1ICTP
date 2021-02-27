@@ -13,12 +13,10 @@ namespace Lab1ICTP
         }
 
         public int PlayerId { get; set; }
-        [Display(Name = "Ім'я")]
+        [Display(Name = "Повне Ім'я")]
         [Required(ErrorMessage = "Поле не повинно бути порожнім")]
-        public string FirstName { get; set; }
-        [Display(Name = "Фамілія")]
-        [Required(ErrorMessage = "Поле не повинно бути порожнім")]
-        public string SurName { get; set; }
+        public string FullName { get; set; }
+
 
         public virtual ICollection<Career> Careers { get; set; }
     }

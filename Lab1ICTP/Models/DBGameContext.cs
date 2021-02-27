@@ -74,7 +74,7 @@ namespace Lab1ICTP
 
             modelBuilder.Entity<Game>(entity =>
             {
-                entity.Property(e => e.StartTime).HasColumnType("date");
+                entity.Property(e => e.StartTime).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Referee)
                     .WithMany(p => p.Games)
@@ -108,11 +108,7 @@ namespace Lab1ICTP
 
             modelBuilder.Entity<Player>(entity =>
             {
-                entity.Property(e => e.FirstName)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.SurName)
+                entity.Property(e => e.FullName)
                     .IsRequired()
                     .HasMaxLength(50);
             });
