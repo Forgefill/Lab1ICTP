@@ -155,5 +155,13 @@ namespace Lab1ICTP.Controllers
         {
             return _context.Teams.Any(e => e.TeamId == id);
         }
+
+        public async Task<IActionResult> TeamsByCity(int cityId, string name)
+        {
+            ViewBag.CityId = cityId;
+            ViewBag.CityName = name;
+            var TeamsByCity = _context.Teams.Where(c => c.CityId == cityId).Include(t => t.City);
+            return View(await TeamsByCity.ToListAsync());
+        }
     }
 }

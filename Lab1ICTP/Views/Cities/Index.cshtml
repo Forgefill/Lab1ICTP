@@ -26,7 +26,8 @@
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.CityId">Редагувати</a> |
-                <a asp-action="Details" asp-route-id="@item.CityId">Деталі</a> |
+                @Html.ActionLink("Команди міста", "TeamsByCity", "Teams", new { cityId = item.CityId, name = item.Name }) |
+                <a asp-action="Details" asp-route-id="@item.CityId">Стадіони міста</a> |
                 <a asp-action="Delete" asp-route-id="@item.CityId">Видалити</a>
             </td>
         </tr>
