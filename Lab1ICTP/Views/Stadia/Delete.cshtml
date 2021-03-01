@@ -8,7 +8,6 @@
 
 <h3>Ви дійсно хочете видалити обраний стадіон?</h3>
 <div>
-    <h4>Stadium</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -27,7 +26,8 @@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="StadiumId" />
+        <input type="hidden" value="@ViewBag.CityId" name="CityId">
         <input type="submit" value="Видалити" class="btn btn-danger" /> |
-        <a asp-action="Index">Повернутися до списку</a>
+        @Html.ActionLink("Повернутися до списку", "Index", "Stadia", new { id = ViewBag.CityId, name = ViewBag.CityName })
     </form>
 </div>

@@ -19,19 +19,20 @@ namespace Lab1ICTP.Controllers
         }
 
         // GET: Stadia
-        public async Task<IActionResult> Index(int? id, string? name)
+        public async Task<IActionResult> Index(int? id, string name)
         {
             if (id == null) return RedirectToAction("Cities", "Index");
-            //var dBGameContext = _context.Stadiums.Include(s => s.City);
             ViewBag.CityId = id;
-            ViewBag.Name = name;
+            ViewBag.CityName = name;
             var StadiumsByCities = _context.Stadiums.Where(b => b.CityId == id).Include(b => b.City);
             return View(await StadiumsByCities.ToListAsync());
         }
 
         // GET: Stadia/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? id, int cityId)
         {
+            ViewBag.CityId = cityId;
+            ViewBag.CityName = _context.Cities.Where(c => c.CityId == cityId).FirstOrDefault().Name;
             if (id == null)
             {
                 return NotFound();
@@ -52,8 +53,7 @@ namespace Lab1ICTP.Controllers
         public IActionResult Create(int CityId)
         {
             ViewBag.CityId = CityId;
-            ViewBag.Name = _context.Cities.Where(c => c.CityId == CityId).FirstOrDefault().Name;
-            ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name");
+            ViewBag.CityName = _context.Cities.Where(c => c.CityId == CityId).FirstOrDefault().Name;
             return View();
         }
 
@@ -69,18 +69,16 @@ namespace Lab1ICTP.Controllers
             {
                 _context.Add(stadium);
                 await _context.SaveChangesAsync();
-                //return RedirectToAction(nameof(Index));
                 return RedirectToAction("Index", "Stadia", new { id = CityId, name = _context.Cities.Where(c => c.CityId == CityId).FirstOrDefault().Name });
             }
-            //ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", stadium.CityId);
-            //return View(stadium);
             return RedirectToAction("Index", "Stadia", new { id = CityId, name = _context.Cities.Where(c => c.CityId == CityId).FirstOrDefault().Name });
         }
 
         // GET: Stadia/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? id, int cityId)
         {
-
+            ViewBag.CityId = cityId;
+            ViewBag.CityName = _context.Cities.Where(c => c.CityId == cityId).FirstOrDefault().Name;
             if (id == null)
             {
                 return NotFound();
@@ -91,7 +89,6 @@ namespace Lab1ICTP.Controllers
             {
                 return NotFound();
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", stadium.CityId);
             return View(stadium);
         }
 
@@ -100,8 +97,9 @@ namespace Lab1ICTP.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StadiumId,Name,CityId")] Stadium stadium)
+        public async Task<IActionResult> Edit(int id, int cityId, [Bind("StadiumId,Name,CityId")] Stadium stadium)
         {
+            stadium.CityId = cityId;
             if (id != stadium.StadiumId)
             {
                 return NotFound();
@@ -125,15 +123,17 @@ namespace Lab1ICTP.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index", "Stadia", new { id = cityId, name = _context.Cities.Where(c => c.CityId == cityId).FirstOrDefault().Name });
             }
-            ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", stadium.CityId);
-            return View(stadium);
+            //ViewData["CityId"] = new SelectList(_context.Cities, "CityId", "Name", stadium.CityId);
+            return RedirectToAction("Index", "Stadia", new { id = cityId, name = _context.Cities.Where(c => c.CityId == cityId).FirstOrDefault().Name });
         }
 
         // GET: Stadia/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? id, int cityId)
         {
+            ViewBag.CityId = cityId;
+            ViewBag.CityName = _context.Cities.Where(c => c.CityId == cityId).FirstOrDefault().Name;
             if (id == null)
             {
                 return NotFound();
@@ -153,12 +153,13 @@ namespace Lab1ICTP.Controllers
         // POST: Stadia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, int cityId)
         {
+
             var stadium = await _context.Stadiums.FindAsync(id);
             _context.Stadiums.Remove(stadium);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index", "Stadia", new { id = cityId, name = _context.Cities.Where(c => c.CityId == cityId).FirstOrDefault().Name });
         }
 
         private bool StadiumExists(int id)

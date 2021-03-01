@@ -4,7 +4,7 @@
     ViewData["Title"] = "Стадіони у місті";
 }
 
-<h1>Стадіони в місті @ViewBag.Name</h1>
+<h1>Стадіони в місті @ViewBag.CityName</h1>
 
 <p>
     @Html.ActionLink("Додати новий стадіон", "Create", new { CityId = @ViewBag.CityId })
@@ -31,10 +31,10 @@
                 @Html.DisplayFor(modelItem => item.City.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.StadiumId">Редагувати</a> |
-                <a asp-action="Details" asp-route-id="@item.StadiumId">Деталі</a> |
+                @Html.ActionLink("Редагувати", "Edit", new { id = item.StadiumId, cityId = @ViewBag.CityId }) |
                 @Html.ActionLink("Матчі на стадіоні", "GamesByStadium", "Games", new { stadiumId = item.StadiumId, name = item.Name }) |
-                <a asp-action="Delete" asp-route-id="@item.StadiumId">Видалити</a>
+                @Html.ActionLink("Деталі", "Details", new { id = item.StadiumId, cityId = @ViewBag.CityId }) |
+                @Html.ActionLink("Видалити", "Delete", new { id = item.StadiumId, cityId = @ViewBag.CityId })
             </td>
         </tr>
 }

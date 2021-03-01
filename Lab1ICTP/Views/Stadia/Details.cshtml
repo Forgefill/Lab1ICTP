@@ -25,6 +25,6 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.StadiumId">Редагувати</a> |
-    <a asp-action="Index">Повернутися до списку</a>
+    @Html.ActionLink("Редагувати", "Edit", new { id = @Model.StadiumId, CityId = @ViewBag.CityId }) |
+    @Html.ActionLink("Повернутися до списку", "Index", "Careers", new { id = ViewBag.CityId, name = ViewBag.CityName })
 </div>
