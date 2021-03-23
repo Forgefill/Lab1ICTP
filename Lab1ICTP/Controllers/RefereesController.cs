@@ -55,6 +55,11 @@ namespace Lab1ICTP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("RefereeId,FullName,BirthDate")] Referee referee)
         {
+
+            if (referee.BirthDate < new DateTime(1950, 12, 1))
+            {
+                ModelState.AddModelError("BirthDate", "Суддя застарий");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(referee);

@@ -66,6 +66,14 @@ namespace Lab1ICTP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("GameId,StartTime,StadiumId,TournamentId,TeamId,TeamId2,RefereeId")] Game game)
         {
+            if(game.TeamId == game.TeamId2)
+            {
+                ModelState.AddModelError("TeamId", "Помилкова пара команд");
+            }
+            if (game.StartTime < new DateTime(1970, 12, 1))
+            {
+                ModelState.AddModelError("StartTime", "Час доступний 1970 р.н.е. і далі");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(game);
@@ -112,7 +120,10 @@ namespace Lab1ICTP.Controllers
             {
                 return NotFound();
             }
-
+            if (game.TeamId == game.TeamId2)
+            {
+                ModelState.AddModelError("TeamId", "Помилкова пара команд");
+            }
             if (ModelState.IsValid)
             {
                 try

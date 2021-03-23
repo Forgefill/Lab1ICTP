@@ -71,6 +71,10 @@ namespace Lab1ICTP.Controllers
         public async Task<IActionResult> Create(int playerId,[Bind("CareerId,TeamId,PlayerId,StartDate,EndDate,PositionId")] Career career)
         {
             career.PlayerId = playerId;
+            if (career.EndDate!= null && career.StartDate > career.EndDate)
+            {
+                ModelState.AddModelError("StartDate", "Невірний часовий проміжок");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(career);
@@ -114,6 +118,10 @@ namespace Lab1ICTP.Controllers
         public async Task<IActionResult> Edit(int id, int playerId, [Bind("CareerId,TeamId,PlayerId,StartDate,EndDate,PositionId")] Career career)
         {
             career.PlayerId = playerId;
+            if (career.EndDate != null && career.StartDate > career.EndDate)
+            {
+                ModelState.AddModelError("StartDate", "Невірний часовий проміжок");
+            }
             if (id != career.CareerId)
             {
                 return NotFound();

@@ -22,21 +22,48 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.TeamId">Редагувати</a> |
-                @Html.ActionLink("Матчі команди", "GamesByTeam", "Games", new { teamId = item.TeamId, name = item.Name}) |
-                <a asp-action="Details" asp-route-id="@item.TeamId">Деталі</a> |
-                <a asp-action="Delete" asp-route-id="@item.TeamId">Видалити</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.City.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.TeamId">Редагувати</a> |
+                    @Html.ActionLink("Матчі команди", "GamesByTeam", "Games", new { teamId = item.TeamId, name = item.Name }) |
+                    <a asp-action="Details" asp-route-id="@item.TeamId">Деталі</a> |
+                    <a asp-action="Delete" asp-route-id="@item.TeamId">Видалити</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div class="container">
+    <div id="chart1"></div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            $.get('/api/Charts/JsonData', function(JsonData) {
+                data = google.visualization.arrayToDataTable(JsonData, false);
+                var option = {
+                    title: "Співвідношення кількості команд та міст",
+                    width: 500,
+                    height: 400
+                };
+                chart = new google.visualization.PieChart(document.getElementById('chart1'));
+                chart.draw(data, option);
+            })
+        }
+    </script>
+}

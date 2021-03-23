@@ -34,32 +34,61 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StartTime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Referee.FullName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Stadium.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Team.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TeamId2Navigation.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tournament.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.GameId">Редагувати</a> |
-                <a asp-action="Details" asp-route-id="@item.GameId">Деталі</a> |
-                <a asp-action="Delete" asp-route-id="@item.GameId">Видалити</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StartTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Referee.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stadium.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Team.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TeamId2Navigation.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tournament.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.GameId">Редагувати</a> |
+                    <a asp-action="Details" asp-route-id="@item.GameId">Деталі</a> |
+                    <a asp-action="Delete" asp-route-id="@item.GameId">Видалити</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+<div class="container">
+    <div id="chart2"></div>
+</div>
+
+@section scripts{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script>
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            $.get('/api/Charts/JsonData2', function (JsonData2) {
+                data = google.visualization.arrayToDataTable(JsonData2, false);
+                var option = {
+                    title: "Співвідношення кількості матчів та турнірів",
+                    width: 500,
+                    height: 400
+                };
+                chart = new google.visualization.ColumnChart(document.getElementById('chart2'));
+                chart.draw(data, option);
+            })
+        }
+    </script>
+}
+
+

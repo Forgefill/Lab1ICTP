@@ -8,7 +8,9 @@ namespace Lab1ICTP
     public partial class Game
     {
         public int GameId { get; set; }
+        [Required(ErrorMessage = "Час початку відсутній")]
         [Display(Name = "Час початку")]
+        
         public DateTime? StartTime { get; set; }
         [Display(Name = "Стадіон")]
         public int StadiumId { get; set; }

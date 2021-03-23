@@ -55,6 +55,10 @@ namespace Lab1ICTP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("TournamentId,Name,Prize,StartDate,EndDate,Info")] Tournament tournament)
         {
+            if (tournament.StartDate > tournament.EndDate)
+            {
+                ModelState.AddModelError("StartDate", "Невірний часовий проміжок");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(tournament);
@@ -91,7 +95,10 @@ namespace Lab1ICTP.Controllers
             {
                 return NotFound();
             }
-
+            if (tournament.StartDate > tournament.EndDate)
+            {
+                ModelState.AddModelError("StartDate", "Невірний часовий проміжок");
+            }
             if (ModelState.IsValid)
             {
                 try
