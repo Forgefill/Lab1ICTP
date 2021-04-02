@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Lab1ICTP.Player>
-
+﻿@model IEnumerable<Lab1ICTP.Player> 
 @{
     ViewData["Title"] = "Index";
 }
@@ -24,7 +23,16 @@
 </div>
 <div>
     <h3>Завантаження інформації в файл</h3>
-    <a asp-action="Export">Завантажити</a>
+    <h4>Критерії відбору</h4>
+    <form asp-action="Export" method="post">
+        Гравець:
+        <select name="playerid" class="form-control-5" asp-items="ViewBag.players"> <option value="ViewBag.NULL">-</option></select>
+        Команда:
+        <select name="teamid" class="form-control-5" asp-items="ViewBag.teams"><option value="ViewBag.NULL">-</option></select>
+        Позиція:
+        <select name="posid" class="form-control-5" asp-items="ViewBag.positions"><option value="ViewBag.NULL">-</option></select>
+        <input type="submit" value="завантажити" class="btn btn-primary" />
+    </form>
 </div>
 <table class="table">
     <thead>

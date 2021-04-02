@@ -1,0 +1,29 @@
+Error with player: Олександр Зінченко row num 3 --- error message: row has empty field - time: 28.03.2021 21:00:28
+Error with player: Олександр Зінченко row num 4 --- error message: wrong data type - time: 28.03.2021 21:00:28
+Error with player: Олександр Зінченко row num 5 --- error message: player's career intersects - time: 28.03.2021 21:00:28
+Error with player: Олександр Грабар row num 2 --- error message: start later than end - time: 30.03.2021 12:37:48
+Error with player: Сергій Миколенко row num 2 --- error message: start later than end - time: 30.03.2021 12:37:48
+Error with player: Симон Іванов row num 2 --- error message: row has empty field - time: 30.03.2021 12:37:48
+Error with player: Єгор Доренко row num 3 --- error message: player's career intersects - time: 30.03.2021 12:37:48
+Error with player: Олександр Грабар row num 2 --- error message: start later than end - time: 30.03.2021 12:39:22
+Error with player: Симон Іванов row num 2 --- error message: row has empty field - time: 30.03.2021 12:39:22
+Error with player: Єгор Доренко row num 3 --- error message: player's career intersects - time: 30.03.2021 12:39:22
+Error with player: Симон Іванов row num 2 --- error message: row has empty field - time: 30.03.2021 12:47:28
+Error with player: Симон Іванов row num 2 --- error message: row has empty field - time: 30.03.2021 12:50:43
+Error with player: Симон Іванов row num 2 --- error message: row has empty field - time: 30.03.2021 12:53:48
+Error with player: Микола Дикий row num 2 --- error message: player's career intersects - time: 30.03.2021 13:00:29
+Error with player: Олександр Грабар row num 2 --- error message: player's career intersects - time: 30.03.2021 13:00:40
+Error with player: Сергій Миколенко row num 2 --- error message: player's career intersects - time: 30.03.2021 13:00:40
+Error with player: Симон Іванов row num 2 --- error message: row has empty field - time: 30.03.2021 13:00:41
+Error with player: Микола Дикий row num 2 --- error message: player's career intersects - time: 30.03.2021 13:01:18
+Error with player: Олександр Грабар row num 2 --- error message: player's career intersects - time: 30.03.2021 13:01:19
+Error with player: Сергій Миколенко row num 2 --- error message: player's career intersects - time: 30.03.2021 13:01:19
+Error with player: Симон Іванов row num 2 --- error message: row has empty field - time: 30.03.2021 13:01:19
+Error with player: Єгор Доренко row num 2 --- error message: player's career intersects - time: 30.03.2021 13:01:19
+Error with player: Ільченко Юхим row num 2 --- error message: player's career intersects - time: 30.03.2021 13:01:19
+Error with player: Микола Дикий row num 2 --- error message: player's career intersects - time: 30.03.2021 13:03:25
+Error with player: Сергій Миколенко row num 2 --- error message: player's career intersects - time: 30.03.2021 13:03:25
+Error with player: Олександр Зінченко row num 3 --- error message: row has empty field - time: 02.04.2021 20:17:35
+Error with player: Олександр Зінченко row num 4 --- error message: wrong data type - time: 02.04.2021 20:17:35
+Error with player: Олександр Зінченко row num 5 --- error message: player's career intersects - time: 02.04.2021 20:17:35
+Error with player: Олександр Зінченко row num 6 --- error message: start later than end - time: 02.04.2021 20:17:35
