@@ -14,6 +14,7 @@ namespace Lab1ICTP.ViewModels
 
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(100, ErrorMessage = "Поле {0} повинно мати мінімум {2} і максимум {1} символів.", MinimumLength = 5)]
         [Display(Name = "Пароль")]
         public string Password { get; set; }
 
