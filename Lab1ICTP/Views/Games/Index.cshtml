@@ -5,10 +5,12 @@
 }
 
 <h1>Матчі</h1>
-
+@if (User.IsInRole("admin"))
+{
 <p>
     <a asp-action="Create">Додати матч</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -56,9 +58,14 @@
                     @Html.DisplayFor(modelItem => item.Tournament.Name)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.GameId">Редагувати</a> |
-                    <a asp-action="Details" asp-route-id="@item.GameId">Деталі</a> |
-                    <a asp-action="Delete" asp-route-id="@item.GameId">Видалити</a>
+                    <a asp-action="Details" asp-route-id="@item.GameId">Деталі</a>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <label>|</label>
+                        <a asp-action="Edit" asp-route-id="@item.GameId">Редагувати</a>
+                        <label>|</label>
+                        <a asp-action="Delete" asp-route-id="@item.GameId">Видалити</a>
+                    }
                 </td>
             </tr>
         }

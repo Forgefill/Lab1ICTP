@@ -44,11 +44,42 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Cities" asp-action="Index">Міста</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">Користувачі</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Roles" asp-action="Index">Ролі</a>
+                            </li>
+                        }
+                        @if (User.IsInRole("admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link active" asp-area="" asp-controller="Users" asp-action="Index">Список користувачів</a>
+                            </li>
+                        }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <li class="nav-item">
+                                <form method="post" asp-action="Logout" asp-controller="Account">
+                                    <div style="display: flex">
+                                        <label class="text-info" style="margin-left: auto ;margin-right: auto; margin-top: 8px;">@User.Identity.Name</label>
+                                        <button type="submit" class="nav-link btn text-danger py-0" style="width:auto">
+                                            Вихід
+                                        </button>
+                                    </div>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a asp-action="Register" asp-controller="Account" class="nav-link active" style="width:95px; text-align:center; margin-left: 250px">Реєстрація</a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="Login" asp-controller="Account" class="nav-link active" style="width:95px; text-align:center;">Вхід</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

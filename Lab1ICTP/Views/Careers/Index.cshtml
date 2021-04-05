@@ -5,10 +5,12 @@
 }
 
 <h1>Кар'єри гравця @ViewBag.PlayerName</h1>
-
+@if(User.IsInRole("admin"))
+{ 
 <p>
     @Html.ActionLink("Додати нову кар'єру","Create", new {PlayerId = @ViewBag.PlayerId })
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -49,9 +51,14 @@
                 @Html.DisplayFor(modelItem => item.Team.Name)
             </td>
             <td>
-                @Html.ActionLink("Редагувати", "Edit", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId }) |
-                @Html.ActionLink("Деталі", "Details", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId }) |
-                @Html.ActionLink("Видалити", "Delete", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId })
+                @Html.ActionLink("Деталі", "Details", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId })
+                @if (User.IsInRole("admin"))
+                {
+                    <label>|</label>
+                    @Html.ActionLink("Видалити", "Delete", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId })
+                    <label>|</label>
+                    @Html.ActionLink("Редагувати", "Edit", new { id = item.CareerId, PlayerId = @ViewBag.PlayerId })
+                }
             </td>
         </tr>
 }

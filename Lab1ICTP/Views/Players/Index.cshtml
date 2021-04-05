@@ -4,7 +4,8 @@
 }
 
 <h1>Гравці</h1>
-
+@if (User.IsInRole("admin"))
+{
 <p>
     <a asp-action="Create">Додати гравця</a>
 </p>
@@ -21,6 +22,7 @@
     </div>
 }
 </div>
+}
 <div>
     <h3>Завантаження інформації в файл</h3>
     <h4>Критерії відбору</h4>
@@ -51,9 +53,14 @@
                     @Html.DisplayFor(modelItem => item.FullName)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.PlayerId">Редагувати</a> |
-                    <a asp-action="Details" asp-route-id="@item.PlayerId">Кар'єра</a> |
-                    <a asp-action="Delete" asp-route-id="@item.PlayerId">Видалити</a>
+                    <a asp-action="Details" asp-route-id="@item.PlayerId">Кар'єра</a>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <label>|</label>
+                        <a asp-action="Edit" asp-route-id="@item.PlayerId">Редагувати</a>
+                        <label>|</label>
+                        <a asp-action="Delete" asp-route-id="@item.PlayerId">Видалити</a>
+                    }
                 </td>
             </tr>
         }

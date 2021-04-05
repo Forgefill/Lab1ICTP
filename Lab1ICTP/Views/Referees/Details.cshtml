@@ -25,6 +25,10 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.RefereeId">Редагувати</a> |
+    @if (User.IsInRole("admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model.RefereeId">Редагувати</a>
+        <label>|</label>
+    }
     <a asp-action="Index">Повернутися до списку</a>
 </div>

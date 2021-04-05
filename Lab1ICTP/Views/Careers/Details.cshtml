@@ -43,6 +43,10 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Редагувати", "Edit", new { id = @Model.CareerId, PlayerId = @ViewBag.PlayerId }) |
-    @Html.ActionLink("Повернутися до списку", "Index", "Careers", new { id = ViewBag.PlayerId, name = ViewBag.PlayerName })
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Редагувати", "Edit", new { id = @Model.CareerId, PlayerId = @ViewBag.PlayerId })
+        <label>|</label>
+    }
+        @Html.ActionLink("Повернутися до списку", "Index", "Careers", new { id = ViewBag.PlayerId, name = ViewBag.PlayerName })
 </div>

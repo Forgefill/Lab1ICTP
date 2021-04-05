@@ -5,10 +5,12 @@
 }
 
 <h1>Стадіони в місті @ViewBag.CityName</h1>
-
+@if (User.IsInRole("admin"))
+{
 <p>
     @Html.ActionLink("Додати новий стадіон", "Create", new { CityId = @ViewBag.CityId })
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -31,10 +33,15 @@
                 @Html.DisplayFor(modelItem => item.City.Name)
             </td>
             <td>
-                @Html.ActionLink("Редагувати", "Edit", new { id = item.StadiumId, cityId = @ViewBag.CityId }) |
                 @Html.ActionLink("Матчі на стадіоні", "GamesByStadium", "Games", new { stadiumId = item.StadiumId, name = item.Name }) |
-                @Html.ActionLink("Деталі", "Details", new { id = item.StadiumId, cityId = @ViewBag.CityId }) |
-                @Html.ActionLink("Видалити", "Delete", new { id = item.StadiumId, cityId = @ViewBag.CityId })
+                @Html.ActionLink("Деталі", "Details", new { id = item.StadiumId, cityId = @ViewBag.CityId })
+                @if (User.IsInRole("admin"))
+                {
+                    <label>|</label>
+                    @Html.ActionLink("Редагувати", "Edit", new { id = item.StadiumId, cityId = @ViewBag.CityId })
+                    <label>|</label>
+                    @Html.ActionLink("Видалити", "Delete", new { id = item.StadiumId, cityId = @ViewBag.CityId })
+                }
             </td>
         </tr>
 }

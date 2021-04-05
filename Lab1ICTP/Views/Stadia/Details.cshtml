@@ -25,6 +25,10 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Редагувати", "Edit", new { id = @Model.StadiumId, CityId = @ViewBag.CityId }) |
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Редагувати", "Edit", new { id = @Model.StadiumId, CityId = @ViewBag.CityId })
+        <label>|</label>
+    }
     @Html.ActionLink("Повернутися до списку", "Index", "Careers", new { id = ViewBag.CityId, name = ViewBag.CityName })
 </div>

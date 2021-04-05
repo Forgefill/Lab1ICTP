@@ -17,7 +17,6 @@
                     <a class="btn btn-sm btn-primary" asp-action="Edit" asp-route-id="@user.Id">Редагувати</a>
                     @Html.ActionLink("Права доступу", "Edit", "Roles", new { UserId = @user.Id }, new { @class = "btn btn-sm btn-primary" })
                     <a class="btn btn-sm btn-primary" asp-action="ChangePassword" asp-route-id="@user.Id">Змінити пароль</a>
-                    @Html.ActionLink("Список ролей", "Index", "Roles", new { }, new { @class = "btn btn-sm btn-primary" })
                     <button type="submit" class="btn btn-sm btn-danger">
                         Видалити
                     </button>

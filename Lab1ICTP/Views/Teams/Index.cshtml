@@ -5,10 +5,12 @@
 }
 
 <h1>Команди</h1>
-
+@if (User.IsInRole("admin"))
+{
 <p>
     <a asp-action="Create">Додати команду</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -32,10 +34,15 @@
                     @Html.DisplayFor(modelItem => item.City.Name)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.TeamId">Редагувати</a> |
                     @Html.ActionLink("Матчі команди", "GamesByTeam", "Games", new { teamId = item.TeamId, name = item.Name }) |
-                    <a asp-action="Details" asp-route-id="@item.TeamId">Деталі</a> |
-                    <a asp-action="Delete" asp-route-id="@item.TeamId">Видалити</a>
+                    <a asp-action="Details" asp-route-id="@item.TeamId">Деталі</a>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <label>|</label>
+                        <a asp-action="Delete" asp-route-id="@item.TeamId">Видалити</a>
+                        <label>|</label>
+                        <a asp-action="Edit" asp-route-id="@item.TeamId">Редагувати</a>
+                    }
                 </td>
             </tr>
         }

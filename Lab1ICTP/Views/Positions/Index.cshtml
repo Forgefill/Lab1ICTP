@@ -5,10 +5,12 @@
 }
 
 <h1>Позиції</h1>
-
+@if (User.IsInRole("admin"))
+{
 <p>
     <a asp-action="Create">Додати позицію</a>
 </p>
+}
 <table class="table">
     <thead>
         <tr>
@@ -25,9 +27,14 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.PositionId">Редагувати</a> |
-                <a asp-action="Details" asp-route-id="@item.PositionId">Деталі</a> |
-                <a asp-action="Delete" asp-route-id="@item.PositionId">Видалити</a>
+                <a asp-action="Details" asp-route-id="@item.PositionId">Деталі</a>
+                @if (User.IsInRole("admin"))
+                {
+                    <label>|</label>
+                    <a asp-action="Edit" asp-route-id="@item.PositionId">Редагувати</a>
+                    <label>|</label>
+                    <a asp-action="Delete" asp-route-id="@item.PositionId">Видалити</a>
+                }
             </td>
         </tr>
 }
