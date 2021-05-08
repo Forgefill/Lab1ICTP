@@ -61,7 +61,7 @@ namespace LibraryMVC.Controllers
 
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
-                return RedirectToAction("UserList");
+                return RedirectToAction("Index", "Users");
             }
 
             return NotFound();

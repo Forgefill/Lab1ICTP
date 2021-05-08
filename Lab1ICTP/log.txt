@@ -27,3 +27,41 @@ Error with player: Олександр Зінченко row num 3 --- error messa
 Error with player: Олександр Зінченко row num 4 --- error message: wrong data type - time: 02.04.2021 20:17:35
 Error with player: Олександр Зінченко row num 5 --- error message: player's career intersects - time: 02.04.2021 20:17:35
 Error with player: Олександр Зінченко row num 6 --- error message: start later than end - time: 02.04.2021 20:17:35
+Error with player: Олександр Зінченко row num 3 --- error message: row has empty field - time: 05.04.2021 21:10:45
+Error with player: Олександр Зінченко row num 4 --- error message: wrong data type - time: 05.04.2021 21:10:45
+Error with player: Олександр Зінченко row num 5 --- error message: player's career intersects - time: 05.04.2021 21:10:45
+Error with player: Олександр Зінченко row num 6 --- error message: start later than end - time: 05.04.2021 21:10:45
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:11:03
+Error with player: Олександр Зінченко row num 3 --- error message: row has empty field - time: 05.04.2021 21:11:03
+Error with player: Олександр Зінченко row num 4 --- error message: wrong data type - time: 05.04.2021 21:11:03
+Error with player: Олександр Зінченко row num 5 --- error message: player's career intersects - time: 05.04.2021 21:11:03
+Error with player: Олександр Зінченко row num 6 --- error message: start later than end - time: 05.04.2021 21:11:03
+Error with player: Михайло Бубка row num 2 --- error message: player's career intersects - time: 05.04.2021 21:11:03
+Error with player: Михайло Бубка row num 3 --- error message: player's career intersects - time: 05.04.2021 21:11:03
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:14:29
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:17:24
+Error with player: Михайло Бубка row num 2 --- error message: player's career intersects - time: 05.04.2021 21:17:24
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:17:35
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:18:44
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:21:43
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:22:51
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:25:02
+Error with player: Михайло Бубка row num 2 --- error message: player's career intersects - time: 05.04.2021 21:25:02
+Error with player: Михайло Бубка row num 3 --- error message: player's career intersects - time: 05.04.2021 21:25:02
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:27:54
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:29:46
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:31:45
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:32:21
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:35:41
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 05.04.2021 21:38:38
+Error with player: Олександр Зінченко row num 2 --- error message: player's career intersects - time: 06.04.2021 13:03:04
+Error with player: Олександр Зінченко row num 3 --- error message: row has empty field - time: 06.04.2021 13:03:04
+Error with player: Олександр Зінченко row num 4 --- error message: wrong data type - time: 06.04.2021 13:03:04
+Error with player: Олександр Зінченко row num 5 --- error message: player's career intersects - time: 06.04.2021 13:03:04
+Error with player: Олександр Зінченко row num 6 --- error message: start later than end - time: 06.04.2021 13:03:04
+Error with player: Михайло Бубка row num 2 --- error message: player's career intersects - time: 06.04.2021 13:03:04
+Error with player: Михайло Бубка row num 3 --- error message: player's career intersects - time: 06.04.2021 13:03:04
+Error with player: Олександр Зінченко row num 3 --- error message: row has empty field - time: 06.04.2021 13:19:35
+Error with player: Олександр Зінченко row num 4 --- error message: wrong data type - time: 06.04.2021 13:19:35
+Error with player: Олександр Зінченко row num 5 --- error message: player's career intersects - time: 06.04.2021 13:19:35
+Error with player: Олександр Зінченко row num 6 --- error message: start later than end - time: 06.04.2021 13:19:35

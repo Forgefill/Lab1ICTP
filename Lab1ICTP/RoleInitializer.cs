@@ -22,12 +22,17 @@ namespace Lab1ICTP
             {
                 User admin = new User { Email = adminEmail, UserName = adminEmail };
                 admin.EmailConfirmed = true;
+                admin.Year = 2002;
                 IdentityResult result = await userManager.CreateAsync(admin, password);
                 if (result.Succeeded)
                 {
                     await userManager.AddToRoleAsync(admin, "admin");
                 }
             }
+            else
+            {
+               await userManager.AddToRoleAsync(await userManager.FindByNameAsync(adminEmail), "admin");
+            }    
         }
     }
 }

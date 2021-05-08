@@ -7,11 +7,11 @@ namespace Lab1ICTP.ViewModels
 {
     public class ResetPasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Порожнє поле")]
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Порожнє поле")]
         [StringLength(100, ErrorMessage = "Поле {0} повинно мати мінімум {2} і максимум {1} символів.", MinimumLength = 5)]
         [DataType(DataType.Password)]
         public string Password { get; set; }

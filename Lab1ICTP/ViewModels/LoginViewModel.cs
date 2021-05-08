@@ -8,11 +8,11 @@ namespace Lab1ICTP.ViewModels
 {
     public class LoginViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Порожнє поле")]
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Порожнє поле")]
         [DataType(DataType.Password)]
         [StringLength(100, ErrorMessage = "Поле {0} повинно мати мінімум {2} і максимум {1} символів.", MinimumLength = 5)]
         [Display(Name = "Пароль")]

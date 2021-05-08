@@ -5,14 +5,14 @@ using Microsoft.AspNetCore.Identity;
 using Lab1ICTP.Models;
 using Lab1ICTP.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using System;
 namespace Lab1ICTP.Controllers
 {
     [Authorize(Roles ="admin")]
     public class UsersController : Controller
     {
         UserManager<User> _userManager;
-
-        public UsersController(UserManager<User> userManager)
+        public UsersController( UserManager<User> userManager)
         {
             _userManager = userManager;
         }
@@ -24,12 +24,18 @@ namespace Lab1ICTP.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(CreateUserViewModel model)
         {
+            if (model.Year < 1900 || model.Year > DateTime.Now.Year)
+            {
+                ModelState.AddModelError("Year", "Рік народження не повинен бути меншим за 1900 і більший за поточний");
+            }
             if (ModelState.IsValid)
             {
                 User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year };
+                user.EmailConfirmed = true;
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await _userManager.AddToRoleAsync(user, "user");
                     return RedirectToAction("Index");
                 }
                 else
@@ -57,6 +63,10 @@ namespace Lab1ICTP.Controllers
         [HttpPost]
         public async Task<IActionResult> Edit(EditUserViewModel model)
         {
+            if (model.Year < 1900 || model.Year > DateTime.Now.Year)
+            {
+                ModelState.AddModelError("Year", "Рік народження не повинен бути менший за 1900 і більшим за поточний");
+            }
             if (ModelState.IsValid)
             {
                 User user = await _userManager.FindByIdAsync(model.Id);
@@ -129,7 +139,7 @@ namespace Lab1ICTP.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Пользователь не найден");
+                    ModelState.AddModelError(string.Empty, "Користувача не знайдено");
                 }
             }
             return View(model);

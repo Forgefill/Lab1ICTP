@@ -8,7 +8,7 @@ namespace Lab1ICTP.ViewModels
 
     public class ForgotPasswordViewModel
         {
-        [Required]
+        [Required(ErrorMessage = "Порожнє поле")]
         [EmailAddress]
         public string Email { get; set; }
         }

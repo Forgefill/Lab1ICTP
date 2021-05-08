@@ -58,7 +58,7 @@ namespace Lab1ICTP.Controllers
 
             if (referee.BirthDate < new DateTime(1950, 12, 1))
             {
-                ModelState.AddModelError("BirthDate", "Суддя застарий");
+                ModelState.AddModelError("BirthDate", "Дата народження повина бути більша за 01.12.1950");
             }
             if (ModelState.IsValid)
             {
@@ -96,7 +96,10 @@ namespace Lab1ICTP.Controllers
             {
                 return NotFound();
             }
-
+            if (referee.BirthDate < new DateTime(1950, 12, 1))
+            {
+                ModelState.AddModelError("BirthDate", "Дата народження повина бути більша за 01.12.1950");
+            }
             if (ModelState.IsValid)
             {
                 try

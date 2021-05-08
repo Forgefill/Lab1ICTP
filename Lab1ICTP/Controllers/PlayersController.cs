@@ -253,6 +253,7 @@ namespace Lab1ICTP.Controllers
                                                 team.City.Name = row.Cell(2).Value.ToString();
                                                 _context.Cities.Add(team.City);
                                             }
+                                            
                                             _context.Teams.Add(team);
                                         }
                                         career.Team = team;
@@ -285,6 +286,7 @@ namespace Lab1ICTP.Controllers
                                         a.WriteLine("Error with player: {0} row num {1} --- error message: {2} - time: {3}", worksheet.Name, row.RowNumber(), e.Message, DateTime.Now.ToString());
                                         a.Close();
                                     }
+                                    await _context.SaveChangesAsync();
                                 }
                             }
                         }
@@ -303,7 +305,6 @@ namespace Lab1ICTP.Controllers
                 var players = _context.Players.Include("Careers").ToList();
                 if (playerid != null) players = players.Where(c => c.PlayerId == playerid).ToList();
 
-                //тут, для прикладу ми пишемо усі книжки з БД, в своїх проектах ТАК НЕ РОБИТИ (писати лише вибрані)
                 foreach (var c in players)
                 {
                     var careers = c.Careers.ToList();

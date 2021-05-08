@@ -59,6 +59,10 @@ namespace Lab1ICTP.Controllers
             {
                 ModelState.AddModelError("StartDate", "Невірний часовий проміжок");
             }
+            if(tournament.Prize > 1000000000 || tournament.Prize < 0)
+            {
+                ModelState.AddModelError("Prize", "Сума повинна бути менше одного мільярда, і більше нуля");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(tournament);
@@ -98,6 +102,10 @@ namespace Lab1ICTP.Controllers
             if (tournament.StartDate > tournament.EndDate)
             {
                 ModelState.AddModelError("StartDate", "Невірний часовий проміжок");
+            }
+            if (tournament.Prize > 1000000000 || tournament.Prize < 0)
+            {
+                ModelState.AddModelError("Prize", "Сума повинна бути менше одного мільярда, і більше нуля");
             }
             if (ModelState.IsValid)
             {

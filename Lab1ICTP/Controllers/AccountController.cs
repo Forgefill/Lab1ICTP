@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Lab1ICTP.Models;
 using Lab1ICTP.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using System;
 namespace Lab1ICTP.Controllers
 {
 
@@ -25,14 +26,19 @@ namespace Lab1ICTP.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
+            if (model.Year < 1900 || model.Year > DateTime.Now.Year)
+            {
+                ModelState.AddModelError("Year", "Рік народження не повинен бути менший за 1900 і більшим за поточний");
+            }
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email };
-                // добавляем пользователя
+                User user = new User { Email = model.Email, UserName = model.Email, Year = model.Year};
+                
+                
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // генерация токена для пользователя
+                    await _userManager.AddToRoleAsync(user, "user");
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                     var callbackUrl = Url.Action(
                         "ConfirmEmail",
@@ -91,7 +97,7 @@ namespace Lab1ICTP.Controllers
                 var user = await _userManager.FindByNameAsync(model.Email);
                 if (user != null)
                 {
-                    // проверяем, подтвержден ли email
+                    
                     if (!await _userManager.IsEmailConfirmedAsync(user))
                     {
                         ModelState.AddModelError(string.Empty, "Ви не підтвердили свій email");
@@ -116,7 +122,7 @@ namespace Lab1ICTP.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Logout()
         {
-            // видаляємо аутентифікаційні куки
+            
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }

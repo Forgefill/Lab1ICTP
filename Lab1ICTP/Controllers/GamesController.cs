@@ -124,6 +124,10 @@ namespace Lab1ICTP.Controllers
             {
                 ModelState.AddModelError("TeamId", "Помилкова пара команд");
             }
+            if (game.StartTime < new DateTime(1970, 12, 1))
+            {
+                ModelState.AddModelError("StartTime", "Час доступний 1970 р.н.е. і далі");
+            }
             if (ModelState.IsValid)
             {
                 try

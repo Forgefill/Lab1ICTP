@@ -9,7 +9,7 @@ namespace Lab1ICTP.ViewModels
     {
         public string Id { get; set; }
         public string Email { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Порожнє поле")]
         public string OldPassword { get; set; }
         
         [Required(ErrorMessage ="Порожнє поле")]
