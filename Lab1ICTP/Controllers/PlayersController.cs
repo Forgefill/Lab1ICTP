@@ -24,6 +24,8 @@ namespace Lab1ICTP.Controllers
         // GET: Players
         public async Task<IActionResult> Index()
         {
+
+
             SelectList players = new SelectList(_context.Players, "PlayerId", "FullName");
             SelectList teams = new SelectList(_context.Teams, "TeamId", "Name");
             SelectList positions = new SelectList(_context.Positions, "PositionId", "Name");

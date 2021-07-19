@@ -13,6 +13,8 @@ namespace Lab1ICTP
         }
 
         public int StadiumId { get; set; }
+        [MinLength(5)]
+        [MaxLength(25)]
         [Display(Name = "Стадіон")]
         [Required(ErrorMessage = "Поле не повинно бути порожнім")]
         public string Name { get; set; }
